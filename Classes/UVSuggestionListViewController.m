@@ -310,7 +310,7 @@
     }
 
     if ([UVSession currentSession].isModal && _firstController) {
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Close", @"UserVoice", [UserVoice bundle], nil)
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UVUtils imageNamed:@"btn_back.png"]
                                                                                  style:UIBarButtonItemStylePlain
                                                                                 target:self
                                                                                 action:@selector(dismiss)];
@@ -333,7 +333,7 @@
 
 - (void)initNavigationItem {
     self.navigationItem.title = _forum.name;
-    self.exitButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Cancel", @"UserVoice", [UserVoice bundle], nil)
+    self.exitButton = [[UIBarButtonItem alloc] initWithImage:[UVUtils imageNamed:@"btn_back.png"]
                                                        style:UIBarButtonItemStylePlain
                                                       target:self
                                                       action:@selector(dismiss)];

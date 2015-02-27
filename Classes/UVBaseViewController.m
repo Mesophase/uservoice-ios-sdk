@@ -155,12 +155,12 @@
 - (void)initNavigationItem {
     self.navigationItem.title = NSLocalizedStringFromTableInBundle(@"Feedback", @"UserVoice", [UserVoice bundle], nil);
 
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Back", @"UserVoice", [UserVoice bundle], nil)
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UVUtils imageNamed:@"btn_back.png"]
                                                                              style:UIBarButtonItemStylePlain
                                                                             target:nil
                                                                             action:nil];
 
-    _exitButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Cancel", @"UserVoice", [UserVoice bundle], nil)
+    _exitButton = [[UIBarButtonItem alloc] initWithImage:[UVUtils imageNamed:@"btn_back.png"]
                                                    style:UIBarButtonItemStylePlain
                                                   target:self
                                                   action:@selector(dismiss)];

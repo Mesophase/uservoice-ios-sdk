@@ -16,6 +16,7 @@
 #import "UVSession.h"
 #import "UVCallback.h"
 #import "UVSigninManager.h"
+#import "UVUtils.h"
 
 @implementation UVCommentViewController {
     UVTextWithFieldsView *_fieldsView;
@@ -119,7 +120,7 @@
             constraints:@[@"|[_fieldsView]|", @"V:|[_fieldsView]|"]];
 
     self.view = view;
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Cancel", @"UserVoice", [UserVoice bundle], nil)
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UVUtils imageNamed:@"btn_back.png"]
                                                                              style:UIBarButtonItemStylePlain
                                                                             target:self
                                                                             action:@selector(dismiss)];

@@ -18,6 +18,7 @@
 #import "UVCustomField.h"
 #import "UVBabayaga.h"
 #import "UVTextWithFieldsView.h"
+#import "UVUtils.h"
 
 @implementation UVContactViewController {
     BOOL _proceed;
@@ -39,7 +40,7 @@
     _instantAnswerManager.deflectingType = @"Ticket";
 
     self.navigationItem.title = NSLocalizedStringFromTableInBundle(@"Send us a message", @"UserVoice", [UserVoice bundle], nil);
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Back", @"UserVoice", [UserVoice bundle], nil) style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UVUtils imageNamed:@"btn_back.png"] style:UIBarButtonItemStylePlain target:nil action:nil];
 
     // using a fields view with no fields extra still gives us better scroll handling
     _fieldsView = [UVTextWithFieldsView new];
@@ -49,7 +50,7 @@
                subviews:NSDictionaryOfVariableBindings(_fieldsView)
             constraints:@[@"|[_fieldsView]|", @"V:|[_fieldsView]|"]];
 
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Cancel", @"UserVoice", [UserVoice bundle], nil)
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UVUtils imageNamed:@"btn_back.png"]
                                                                              style:UIBarButtonItemStylePlain
                                                                             target:self
                                                                             action:@selector(requestDismissal)];

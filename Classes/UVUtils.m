@@ -231,7 +231,9 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
     UVStyleSheet *styles = [UVStyleSheet instance];
     if (IOS7) {
         navigationController.navigationBar.tintColor = styles.navigationBarTintColor;
-        navigationController.navigationBar.barTintColor = styles.navigationBarBackgroundColor;
+        navigationController.navigationBar.backgroundColor = styles.navigationBarBackgroundColor;
+        [navigationController.navigationBar setBarTintColor:styles.navigationBarTintColor];
+        [navigationController.navigationBar setTranslucent:NO];
     } else {
         navigationController.navigationBar.tintColor = styles.navigationBarBackgroundColor;
     }
@@ -250,6 +252,18 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
         [navbarTitleTextAttributes setObject:styles.navigationBarFont forKey:NSFontAttributeName];
     }
     [navigationController.navigationBar setTitleTextAttributes:navbarTitleTextAttributes];
+
+    NSMutableDictionary *backButtonTitleTextAttributes = [[NSMutableDictionary alloc] initWithDictionary:[navigationController.navigationBar.backItem.backBarButtonItem titleTextAttributesForState:UIControlStateNormal]];
+    if (styles.navigationBarTextColor) {
+        [backButtonTitleTextAttributes setObject:styles.navigationBarTextColor forKey:NSForegroundColorAttributeName];
+    }
+    if (styles.navigationBarTextShadowColor) {
+        [backButtonTitleTextAttributes setObject:styles.navigationBarTextShadowColor forKey:NSShadowAttributeName];
+    }
+    if (styles.navigationBarFont) {
+        [backButtonTitleTextAttributes setObject:styles.navigationBarFont forKey:NSFontAttributeName];
+    }
+    [navigationController.navigationBar.backItem.backBarButtonItem setTitleTextAttributes:backButtonTitleTextAttributes forState:UIControlStateNormal];
 }
 
 + (NSString *)formatInteger:(NSInteger)number {
